@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: gunicorn
-        image: ghcr.io/jasonwsuk/viking_gunicorn_port
+        image: jasonwsuk/vk-gunicorn
         env:
         - name: POSTGRES_DB
           value: viking
