@@ -24,7 +24,7 @@ spec:
           value: dkagh12.
         - name: POSTGRES_HOST
           value: postgres-headless.default.svc.cluster.local
-        command: ["/bin/bash"]
+        command: ["/bin/sh"]
         args: ["-c", "gunicorn --bind 0:8000 'pybo:create_app()'"]
         ports: 
         - containerPort: 8000
