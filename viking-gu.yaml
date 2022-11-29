@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vk-gunicorn
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: vk-gunicorn
+  template:
+    metadata:
+      labels:
+        app: vk-gunicorn
+    spec:
+      containers:
+      - name: gunicorn
+        image: jasonwsuk/vk-gunicorn
+        env:
+        - name: POSTGRES_DB
+          value: viking
+        - name: POSTGRES_USER
+          value: postgres
+        - name: POSTGRES_PASSWORD
+          value: dkagh12.
+        - name: POSTGRES_HOST
+          value: pgdb-postgresql-ha-postgresql-headless.default.svc.cluster.local 
+        command: ["/bin/sh"]
+        args: ["-c", "gunicorn --bind 0:8000 'pybo:create_app()'"]
+        ports: 
+        - containerPort: 8000

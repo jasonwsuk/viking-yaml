@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: viking-nginx
+  name: vk-nginx
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: viking-nginx
+      app: vk-nginx
   template:
     metadata:
       labels:
-        app: viking-nginx
+        app: vk-nginx
     spec:
       containers:
       - name: nginx
-        image: ghcr.io/jasonwsuk/viking_nginx_port
+        image: jasonwsuk/vk-nginx
         ports:
         - containerPort: 80
         command: ["/bin/sh"]
